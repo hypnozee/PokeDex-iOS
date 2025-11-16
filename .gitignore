@@ -1,0 +1,73 @@
+# Xcode
+# Derived data and build products
+build/
+DerivedData/
+
+# User settings
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+
+# Workspace
+*.xcworkspace
+!xcshareddata
+
+# Xcode project files - user-specific
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+
+# Xcode Server
+.xcresult/
+.xcactivitylog
+
+# Provisioning and signing
+*.mobileprovision
+*.cer
+*.p12
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# macOS
+.DS_Store
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+
+# Environment files
+.env
+.env.*
+
+# Build output for other tools
+node_modules/
+dist/
+
+# Misc
+*.log
+*.tmp
+
+# Keep these if you intentionally commit them (uncomment if needed)
+# !Podfile.lock
+# !Package.resolved

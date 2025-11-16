@@ -43,11 +43,17 @@ struct PokemonListView: View {
                         ScrollView {
                             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                                 ForEach(pokemon) { poke in
-                                    PokemonCardView(pokemon: poke)
-                                        .onAppear { viewModel.loadMoreIfNeeded(currentItem: poke) }
+                                    let nameOrId = poke.number.map { String($0) } ?? poke.id
+                                    NavigationLink(value: nameOrId) {
+                                        PokemonCardView(pokemon: poke)
+                                    }
+                                    .onAppear { viewModel.loadMoreIfNeeded(currentItem: poke) }
                                 }
                             }
                             .padding()
+                        }
+                        .navigationDestination(for: String.self) { nameOrId in
+                            PokemonDetailView(viewModel: DependencyContainer.shared.makePokemonDetailViewModel(nameOrId: nameOrId))
                         }
                     } else {
                         VStack(spacing: 12) {

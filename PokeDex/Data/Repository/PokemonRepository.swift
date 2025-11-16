@@ -84,4 +84,10 @@ class PokemonRepository: PokemonAPIProvider {
             return matchesName || matchesNumber
         }
     }
+
+    // New: fetch a single Pokemon detail by id or name (conformance to protocol)
+    func fetchPokemonDetail(nameOrId: String) async throws -> PokemonDetail {
+        let endpoint = "/pokemon/\(nameOrId)"
+        return try await apiClient.fetch(endpoint)
+    }
 }

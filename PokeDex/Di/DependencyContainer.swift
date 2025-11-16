@@ -23,11 +23,19 @@ class DependencyContainer {
     private lazy var pokemonListUseCase: PokemonListUseCase = {
         DefaultPokemonListUseCase(repository: pokemonRepository)
     }()
+
+    private lazy var pokemonDetailUseCase: PokemonDetailUseCase = {
+        DefaultPokemonDetailUseCase(repository: pokemonRepository)
+    }()
     
     // MARK: - Presentation Layer (ViewModels - Factory pattern)
     
     func makePokemonListViewModel() -> PokemonListViewModel {
         PokemonListViewModel(useCase: pokemonListUseCase)
+    }
+
+    func makePokemonDetailViewModel(nameOrId: String) -> PokemonDetailViewModel {
+        PokemonDetailViewModel(nameOrId: nameOrId, useCase: pokemonDetailUseCase)
     }
     
     // MARK: - Public Resolution Methods
@@ -42,6 +50,10 @@ class DependencyContainer {
     
     func resolvePokemonListViewModel() -> PokemonListViewModel {
         makePokemonListViewModel()
+    }
+
+    func resolvePokemonDetailUseCase() -> PokemonDetailUseCase {
+        pokemonDetailUseCase
     }
     
     // MARK: - Testing Support
